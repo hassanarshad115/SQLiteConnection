@@ -236,5 +236,10 @@ namespace Sqlite
                 nametextBox.Focus();
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            pictureBox2.Visible = pictureBox2.Visible == true ? false : true;
+        }
     }
 }
