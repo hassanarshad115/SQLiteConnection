@@ -26,7 +26,7 @@ namespace Sqlite
 
         private void savebutton_Click(object sender, EventArgs e)
         {
-
+           
             if (IsValid())
             {
 
@@ -34,7 +34,7 @@ namespace Sqlite
                 SQLiteConnection conn = new SQLiteConnection("Data Source=test.db;Version=3;");
 
 
-                string commandstring = "insert into Contacts([Name],[Email],[Mobile]) values(@name,@email,@mobile)";
+          string commandstring = "insert into Contacts([Name],[Email],[Mobile]) values(@name,@email,@mobile)";
                 SQLiteCommand cmd = new SQLiteCommand(commandstring, conn);
 
                 conn.Open();
@@ -79,6 +79,7 @@ namespace Sqlite
             }
             if(emailtextBox.Text.Trim()== string.Empty)
             {
+         
                 MessageBox.Show("Email text box is not fill", "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 emailtextBox.Focus();
                 return false;
@@ -102,15 +103,17 @@ namespace Sqlite
             ///agr database ni ha to ye database bnayga khudi r table b\
             ///
             if(!File.Exists("test.db")){
-                //SQL bra likhna ha jsy SQLiteConnection likha ha asy likhna ha
-                //agr database file ni ha to ye bnady ga r name ak jsa hona chaia uper r nechy
-                
                 SQLiteConnection.CreateFile("test.db");
 
+                //SQL bra likhna ha jsy SQLiteConnection likha ha asy likhna ha
+                //agr database file ni ha to ye bnady ga r name ak jsa hona chaia uper r nechy
+
+
+
+
+
                 SQLiteConnection conn = new SQLiteConnection("Data Source=test.db;Version=3;");
-
-
-                string commandstring = "CREATE TABLE Contacts(Name NVARCHAR(50), Email NVARCHAR(50), Mobile NVARCHAR(50))";
+    string commandstring = "CREATE TABLE Contacts(Name NVARCHAR(50), Email NVARCHAR(50), Mobile NVARCHAR(50))";
                  SQLiteCommand cmd = new SQLiteCommand(commandstring, conn);
 
                 conn.Open();
@@ -156,6 +159,82 @@ namespace Sqlite
         {
             IfDatabaseExists();
             
+        }
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            //// MethodBandiaSbkyLye("Name", nametextBox);
+            //DataTable dt = new DataTable();
+            //DataView dv = dt.DefaultView;
+
+            //dv.RowFilter = "[Name] Like '%" + nametextBox.Text + "%'";
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (IsValid())
+            {
+                SQLiteConnection conn = new SQLiteConnection("Data Source=test.db;Version=3;");
+                string command = "Update Contacts set [Email]=@email,[Mobile]=@mobile where [Name]=@name ";
+                SQLiteCommand cmd = new SQLiteCommand(command, conn);
+
+                conn.Open();
+                cmd.Parameters.AddWithValue("@email", emailtextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@mobile", mobiletextBox.Text);
+                cmd.Parameters.AddWithValue("@name", nametextBox.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Update Data Successfully", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DataGridViewMaDataDekhna();
+
+
+                nametextBox.Clear();
+                emailtextBox.Clear();
+                mobiletextBox.Clear();
+                nametextBox.Focus();
+            }
+        }
+
+        private void deletebutton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please sure that you enter correct Name and Mobile \n Otherwise data will not deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            if (IsValid())
+            {
+                SQLiteConnection conn = new SQLiteConnection("Data Source=test.db;Version=3;");
+                string command = "delete from Contacts where [Mobile]=@mobile and [Name]=@name ";
+                SQLiteCommand cmd = new SQLiteCommand(command, conn);
+               
+
+                conn.Open();
+                cmd.Parameters.AddWithValue("@email", emailtextBox.Text.Trim());
+                cmd.Parameters.AddWithValue("@mobile", mobiletextBox.Text);
+                cmd.Parameters.AddWithValue("@name", nametextBox.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Delete Data Successfully", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                DataGridViewMaDataDekhna();
+
+
+                nametextBox.Clear();
+                emailtextBox.Clear();
+                mobiletextBox.Clear();
+                nametextBox.Focus();
+            }
         }
     }
 }

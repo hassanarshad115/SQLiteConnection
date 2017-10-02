@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.nametextBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -36,8 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.mobiletextBox = new System.Windows.Forms.TextBox();
             this.savebutton = new System.Windows.Forms.Button();
-            this.closebutton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
+            this.deletebutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +76,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(450, 222);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
             // label2
             // 
@@ -113,23 +116,13 @@
             // 
             // savebutton
             // 
-            this.savebutton.Location = new System.Drawing.Point(96, 152);
+            this.savebutton.Location = new System.Drawing.Point(96, 184);
             this.savebutton.Name = "savebutton";
-            this.savebutton.Size = new System.Drawing.Size(75, 23);
+            this.savebutton.Size = new System.Drawing.Size(161, 27);
             this.savebutton.TabIndex = 3;
             this.savebutton.Text = "Save";
             this.savebutton.UseVisualStyleBackColor = true;
             this.savebutton.Click += new System.EventHandler(this.savebutton_Click);
-            // 
-            // closebutton
-            // 
-            this.closebutton.Location = new System.Drawing.Point(182, 152);
-            this.closebutton.Name = "closebutton";
-            this.closebutton.Size = new System.Drawing.Size(75, 23);
-            this.closebutton.TabIndex = 4;
-            this.closebutton.Text = "Close";
-            this.closebutton.UseVisualStyleBackColor = true;
-            this.closebutton.Click += new System.EventHandler(this.closebutton_Click);
             // 
             // progressBar1
             // 
@@ -138,13 +131,34 @@
             this.progressBar1.Size = new System.Drawing.Size(450, 10);
             this.progressBar1.TabIndex = 5;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(182, 140);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Update";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // deletebutton
+            // 
+            this.deletebutton.Location = new System.Drawing.Point(96, 140);
+            this.deletebutton.Name = "deletebutton";
+            this.deletebutton.Size = new System.Drawing.Size(75, 23);
+            this.deletebutton.TabIndex = 7;
+            this.deletebutton.Text = "Delete";
+            this.deletebutton.UseVisualStyleBackColor = true;
+            this.deletebutton.Click += new System.EventHandler(this.deletebutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(715, 240);
+            this.Controls.Add(this.deletebutton);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.closebutton);
             this.Controls.Add(this.savebutton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.mobiletextBox);
@@ -153,9 +167,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nametextBox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "HassanMalik";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -173,8 +188,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox mobiletextBox;
         private System.Windows.Forms.Button savebutton;
-        private System.Windows.Forms.Button closebutton;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deletebutton;
     }
 }
 
