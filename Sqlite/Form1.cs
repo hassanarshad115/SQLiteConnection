@@ -158,6 +158,7 @@ namespace Sqlite
         private void Form1_Load(object sender, EventArgs e)
         {
             IfDatabaseExists();
+
             
         }
 
@@ -240,6 +241,14 @@ namespace Sqlite
         private void timer1_Tick(object sender, EventArgs e)
         {
             pictureBox2.Visible = pictureBox2.Visible == true ? false : true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //this.Hide();
+            Form2 obj = new Form2();
+            obj.ShowDialog();
+
         }
     }
 }
