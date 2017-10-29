@@ -29,7 +29,7 @@ namespace Sqlite
         {
             // agr ak ha visible ha braket ma whe false r agla true 
 
-            if (pictureBox1.Visible == true)
+            if (pictureBox1.Visible == true) // equal ki ye ilamat lgani ha == 
             {
                 pictureBox1.Visible = false;
                 pictureBox2.Visible = true;
